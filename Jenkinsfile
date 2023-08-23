@@ -7,7 +7,7 @@ pipeline {
               archive 'target/*.jar'  //test
             }
         }   
-
+		    echo 'all good!'
 		    stage('UNIT test & jacoco ') {
       steps {
         sh "mvn test"
