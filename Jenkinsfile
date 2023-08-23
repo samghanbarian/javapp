@@ -45,5 +45,16 @@ pipeline {
  
       }
     }
+//---------------------------------------------------------------------------------------------------------------
+
+	stage('Deployment Kubernetes  ') {
+      steps {
+        withKubeConfig([credentialsId: 'k8s-id']) {
+               sh "sed -i 's#replace#samitoto/devops-javaapp:${GIT_COMMIT}#g' k8s_deployment_service.yaml"
+               sh "kubectl apply -f k8s_deployment_service.yaml"
+             }
+      }
+ 
+    } 
 	}
 }
