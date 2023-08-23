@@ -37,7 +37,7 @@ pipeline {
 		stage('Docker Build and Push') {
       steps {
         withCredentials([string(credentialsId: 'github-samitoto', variable: 'DOCKER_HUB_PASSWORD')]) {
-          sh 'sudo docker login -u hrefnhaila -p $DOCKER_HUB_PASSWORD'
+          sh 'sudo docker login -u samitoto -p $DOCKER_HUB_PASSWORD'
           sh 'printenv'
           sh 'sudo docker build -t samitoto/devops-javaapp:""$GIT_COMMIT"" .'
           sh 'sudo docker push samitoto/devops-javaapp:""$GIT_COMMIT""'
